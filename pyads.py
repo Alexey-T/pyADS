@@ -53,7 +53,6 @@ class ADS():
         self.filename = filename
         self.streams = self.init_streams()
 
-
     def init_streams(self):
         file_infos = WIN32_FIND_STREAM_DATA()
         streamlist = list()
@@ -82,34 +81,34 @@ class ADS():
     def has_streams(self):
         return len(self.streams) > 0
 
-    def add_stream_from_file(self,newfile):
-        #Read in the file content
+    def full_filename(self, stream):
+        return "%s:%s" % (self.filename, stream)
+
+    def add_stream_from_file(self, newfile, stream):
+        #Read file content
         if not os.path.exists(newfile):
             return False
-        if os.path.exists("%s:%s" % (self.filename, newfile)):
-            print "A Stream with the same name already exist."
-            return False
-
         fd = open(newfile, "rb")
         content = fd.read()
         fd.close()
+
         #Now write it as stream ADS
-        fd = open("%s:%s" % (self.filename, newfile), "wb")
+        fd = open(self.full_filename(stream), "wb")
         fd.write(content)
         fd.close()
-        self.streams.append(newfile)
+        self.streams.append(stream)
         return True
 
-    def delete_stream(self,stream):
+    def delete_stream(self, stream):
         try:
-            os.remove("%s:%s" % (self.filename, stream))
+            os.remove(self.full_filename(stream))
             self.streams.remove(stream)
             return True
-        except Exception as e:
+        except:
             return False
 
-    def get_stream_content(self,stream):
-        fd = open("%s:%s" %(self.filename, stream), "rb")
+    def get_stream_content(self, stream):
+        fd = open(self.full_filename(stream), "rb")
         content = fd.read()
         fd.close()
         return content
