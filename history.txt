@@ -1,10 +1,11 @@
 
 2017.08.16
 * changed: renamed methods to python_like_case
-* changed: deleted method get_filename (use .filename)
+* changed: deleted methods get_filename (use .filename), get_streams (use .streams)
 * changed: renamed method to has_streams
-* changed: deleted method extract_stream (very simple)
-* changed: deleted method extract_all_streams (very simple)
+* changed: deleted methods extract_* (very simple)
+* add: method full_filename()
+* changed: add_stream_from_file() has param "stream"
 
 2017.08.12
 initial fork
