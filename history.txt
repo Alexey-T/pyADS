@@ -1,0 +1,10 @@
+
+2017.08.16
+* changed: renamed methods to python_like_case
+* changed: deleted method get_filename (use .filename)
+* changed: renamed method to has_streams
+* changed: deleted method extract_stream (very simple)
+* changed: deleted method extract_all_streams (very simple)
+
+2017.08.12
+initial fork
