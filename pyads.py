@@ -86,11 +86,14 @@ class ADS():
 
     def add_stream_from_file(self, newfile, stream):
         #Read file content
-        if not os.path.exists(newfile):
-            return False
-        fd = open(newfile, "rb")
-        content = fd.read()
-        fd.close()
+        if newfile is None:
+            content = b''
+        else:
+            if not os.path.exists(newfile):
+                return False
+            fd = open(newfile, "rb")
+            content = fd.read()
+            fd.close()
 
         #Now write it as stream ADS
         fd = open(self.full_filename(stream), "wb")

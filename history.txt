@@ -1,4 +1,7 @@
 
+2017.08.17
+* add: add_stream_from_file can add empty stream if newfile==None
+
 2017.08.16
 * changed: renamed methods to python_like_case
 * changed: deleted methods get_filename (use .filename), get_streams (use .streams)
